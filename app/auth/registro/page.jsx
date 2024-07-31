@@ -1,28 +1,29 @@
-// import FormAdmin from "./page";
-
-// export default function RegisterPage() {
-//     return (
-//         <main className="w-full max-w-3xl mx-auto p-10">
-//             <div className="flex flex-col justify-center items-center">
-//                 <FormAdmin />
-//             </div>
-//         </main>
-//     )
-// }
-
-"use client"
+"use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
 import NavBar from '../../components/NavBar';
 import SuccessMensage from '../../components/SuccesMessageComponent';
 import { FaHome, FaStickyNote, FaArrowRight } from 'react-icons/fa';
-import { cadastroadmin} from '../../../app/actions/user';
+import { cadastroadmin } from '../../../app/actions/user';
 
-export default function RegistrarUsers() {
+export default function RegistrarUsers({ onAdminRegistered }) {
     const [section, setSection] = useState(true);
     const [message, setMessage] = useState(false);
 
-   
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        try {
+            const newAdmin = await cadastroadmin(formData);
+            setMessage(true);
+            if (onAdminRegistered) {
+                onAdminRegistered(newAdmin);
+            }
+        } catch (error) {
+            console.error("Failed to register admin:", error);
+        }
+    };
+
     return (
         <>
             <div className='w-screen h-screen bg-[#CECECE]'>
@@ -36,7 +37,6 @@ export default function RegistrarUsers() {
                                     <span className="text-lilas">Home</span>
                                 </Link>
                             </li>
-
                             <li aria-current="page">
                                 <div className="flex items-center">
                                     <FaArrowRight />
@@ -44,7 +44,6 @@ export default function RegistrarUsers() {
                                 </div>
                             </li>
                         </ol>
-
                     </nav>
                 </div>
 
@@ -65,14 +64,14 @@ export default function RegistrarUsers() {
                                 <div className="w-full mx-auto max-w-screen-xl py-16">
                                     <section className="py-2">
                                         {section && (
-                                            <form action={cadastroadmin} className="container flex flex-col mx-auto space-y-12">
+                                            <form onSubmit={handleSubmit} className="container flex flex-col mx-auto space-y-12">
                                                 <fieldset className="gap-6 p-6 bg-gray-50 rounded-md shadow-sm dark:bg-gray-50 pt-8">
                                                     <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                                                         <div className="col-span-full sm:col-span-3">
                                                             <label htmlFor="nome" className="text-lilas">Nome</label>
                                                             <input id="nome" name="nome" type="text" placeholder="Seu nome" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
                                                         </div>
-                                                         <div className="col-span-full sm:col-span-3">
+                                                        <div className="col-span-full sm:col-span-3">
                                                             <label htmlFor="sobrenome" className="text-lilas">Sobrenome</label>
                                                             <input id="sobrenome" name="sobrenome" type="text" placeholder="Seu sobrenome" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
                                                         </div>
@@ -102,7 +101,7 @@ export default function RegistrarUsers() {
                                                         </div>
                                                         <div className="col-span-full sm:col-span-3">
                                                             <label htmlFor="tipo" className="text-lilas">Tipo de Admin</label>
-                                                            <select id="genero" name="genero" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required>
+                                                            <select id="tipo" name="tipo" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required>
                                                                 <option className="text-lilas" value=""></option>
                                                                 <option className="text-lilas" value="2">Admin</option>
                                                                 <option className="text-lilas" value="3">Super Admin</option>
@@ -132,4 +131,4 @@ export default function RegistrarUsers() {
             {message && <SuccessMensage message="Usuário registrado com sucesso!" />}
         </>
     );
-}  
+}

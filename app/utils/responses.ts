@@ -1,4 +1,3 @@
-
 //----------------------------Estrutura do cadastro admin---------------------------------------DONE
 export const cadastroAdmin= `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     <SOAP-ENV:Header/>
@@ -130,5 +129,155 @@ export const addDoca = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoa
                 <ns2:aberta>true</ns2:aberta>
             </ns2:dadosDoca>
         </ns2:AllDocasResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>`
+
+//----------------------------RESPONSE: ADD RESERVA DE UMA DOCA --------------
+export const addReservaDoca = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:AddReservaResponse xmlns:ns2="http://station.soap.xml">
+            <ns2:erro>false</ns2:erro>
+            <ns2:mensagem>Reserva enviada com sucesso!!</ns2:mensagem>
+            <ns2:id>52</ns2:id>
+            <ns2:idUser>2</ns2:idUser>
+            <ns2:idEstacao>1</ns2:idEstacao>
+            <ns2:idDoca>3</ns2:idDoca>
+        </ns2:AddReservaResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>`
+//----------------------------RESPONSE: PEGAR TODAS RESERVAS DE UMA ESTAÇÃO "QUANDO NÃO TEM RESERVAS" --------------
+export const pegarTodasReservas = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:GetAllReservaResponse xmlns:ns2="http://station.soap.xml">
+            <ns2:erro>false</ns2:erro>
+            <ns2:mensagem>Sucesso!! Nenhuma reserva registrada.</ns2:mensagem>
+        </ns2:GetAllReservaResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>`
+//----------------------------RESPONSE: PEGAR TODAS RESERVAS DE UMA ESTAÇÃO "QUANDO TEM RESERVAS" --------------
+export const pegarTodasReservasSeTem = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:GetAllReservaResponse xmlns:ns2="http://station.soap.xml">
+            <ns2:erro>false</ns2:erro>
+            <ns2:mensagem>Sucesso ao pegar as reservas de uma estação</ns2:mensagem>
+            <ns2:TodasReservas>
+                <ns2:erro>false</ns2:erro>
+                <ns2:id>52</ns2:id>
+                <ns2:idUser>2</ns2:idUser>
+                <ns2:idEstacao>1</ns2:idEstacao>
+                <ns2:idDoca>3</ns2:idDoca>
+            </ns2:TodasReservas>
+            <ns2:TodasReservas>
+                <ns2:erro>false</ns2:erro>
+                <ns2:id>52</ns2:id>
+                <ns2:idUser>2</ns2:idUser>
+                <ns2:idEstacao>1</ns2:idEstacao>
+                <ns2:idDoca>3</ns2:idDoca>
+            </ns2:TodasReservas>
+            <ns2:TodasReservas>
+                <ns2:erro>false</ns2:erro>
+                <ns2:id>52</ns2:id>
+                <ns2:idUser>2</ns2:idUser>
+                <ns2:idEstacao>1</ns2:idEstacao>
+                <ns2:idDoca>3</ns2:idDoca>
+            </ns2:TodasReservas>
+        </ns2:GetAllReservaResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>`
+
+//----------------------------RESPONSE: PEGAR TODOS OS USERS CICLISTAS --------------
+export const pegarTodosCiclistas = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:GetAllCiclistasResponse xmlns:ns2="http://user.soap.xml">
+            <ns2:estado>true</ns2:estado>
+            <ns2:mensagem>Sucesso ao pegar todos usuários ciclistas</ns2:mensagem>
+            <ns2:ciclistas>
+                <ns2:id>903</ns2:id>
+                <ns2:idUser>2204</ns2:idUser>
+                <ns2:saldo>10.0</ns2:saldo>
+                <ns2:dadosUser>
+                    <ns2:id>2204</ns2:id>
+                    <ns2:nome>Fennandes</ns2:nome>
+                    <ns2:sobrenome>ciclista</ns2:sobrenome>
+                    <ns2:genero>Masculino</ns2:genero>
+                    <ns2:BI>123456789</ns2:BI>
+                    <ns2:email>c1@example.com</ns2:email>
+                    <ns2:telefone>+5511999999999</ns2:telefone>
+                    <ns2:foto/>
+                    <ns2:tipo>1</ns2:tipo>
+                </ns2:dadosUser>
+                <ns2:isDevedor>false</ns2:isDevedor>
+                <ns2:erro>false</ns2:erro>
+            </ns2:ciclistas>
+            <ns2:ciclistas>
+                <ns2:id>903</ns2:id>
+                <ns2:idUser>2204</ns2:idUser>
+                <ns2:saldo>10.0</ns2:saldo>
+                <ns2:dadosUser>
+                    <ns2:id>2204</ns2:id>
+                    <ns2:nome>Fennandes</ns2:nome>
+                    <ns2:sobrenome>ciclista</ns2:sobrenome>
+                    <ns2:genero>Masculino</ns2:genero>
+                    <ns2:BI>123456789</ns2:BI>
+                    <ns2:email>c1@example.com</ns2:email>
+                    <ns2:telefone>+5511999999999</ns2:telefone>
+                    <ns2:foto/>
+                    <ns2:tipo>1</ns2:tipo>
+                </ns2:dadosUser>
+                <ns2:isDevedor>false</ns2:isDevedor>
+                <ns2:erro>false</ns2:erro>
+            </ns2:ciclistas>
+        </ns2:GetAllCiclistasResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>`
+
+//----------------------------RESPONSE: PEGAR TODOS OS USUÁRIOS ADMINISTRATIVOS --------------
+export const pegarTodosAdmins = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:GetAllAdmResponse xmlns:ns2="http://user.soap.xml">
+            <ns2:estado>true</ns2:estado>
+            <ns2:mensagem>Sucesso ao pegar todos usuários administrativos</ns2:mensagem>
+            <ns2:administradores>
+                <ns2:id>403</ns2:id>
+                <ns2:idUser>2207</ns2:idUser>
+                <ns2:saldo>0.0</ns2:saldo>
+                <ns2:dadosUser>
+                    <ns2:id>2207</ns2:id>
+                    <ns2:nome>Ruben</ns2:nome>
+                    <ns2:sobrenome>Adm</ns2:sobrenome>
+                    <ns2:genero>Masculino</ns2:genero>
+                    <ns2:BI>123456789</ns2:BI>
+                    <ns2:email>a1@example.com</ns2:email>
+                    <ns2:telefone>+5511999999999</ns2:telefone>
+                    <ns2:foto/>
+                    <ns2:tipo>2</ns2:tipo>
+                </ns2:dadosUser>
+                <ns2:isDevedor>false</ns2:isDevedor>
+                <ns2:erro>false</ns2:erro>
+            </ns2:administradores>
+            <ns2:administradores>
+                <ns2:id>403</ns2:id>
+                <ns2:idUser>2207</ns2:idUser>
+                <ns2:saldo>0.0</ns2:saldo>
+                <ns2:dadosUser>
+                    <ns2:id>2207</ns2:id>
+                    <ns2:nome>Ruben</ns2:nome>
+                    <ns2:sobrenome>Adm</ns2:sobrenome>
+                    <ns2:genero>Masculino</ns2:genero>
+                    <ns2:BI>123456789</ns2:BI>
+                    <ns2:email>a1@example.com</ns2:email>
+                    <ns2:telefone>+5511999999999</ns2:telefone>
+                    <ns2:foto/>
+                    <ns2:tipo>2</ns2:tipo>
+                </ns2:dadosUser>
+                <ns2:isDevedor>false</ns2:isDevedor>
+                <ns2:erro>false</ns2:erro>
+            </ns2:administradores>
+        </ns2:GetAllAdmResponse>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>`

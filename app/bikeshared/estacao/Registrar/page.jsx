@@ -41,7 +41,7 @@ export default function Criar() {
             </soapenv:Body>
         </soapenv:Envelope>`;
 
-        fetch('https://a3c0-105-172-128-166.ngrok-free.app/baikeshared/user.wsdl', {
+        fetch('https://e1d7-105-172-70-75.ngrok-free.app/baikeshared/user.wsdl', {
             method: 'POST',
             headers: {
                 'Content-Type': 'text/xml',
@@ -117,10 +117,11 @@ export default function Criar() {
                                                         <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
                                                     </div>
                                                     <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="premio" className="text-lilas">Prémio</label>
-                                                        <input id="premio" name="premio" type="text" placeholder="Digite o valor do prémio a se entregar" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
+                                                        <label htmlFor="qtdDocasLivres" className="text-lilas">Quantidade de docas livres</label>
+                                                        <input id="qtdDocasLivres" name="docaslivres" type="number" placeholder="Digite a quantidade de docas livres" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required min={1} />
                                                         <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
                                                     </div>
+                                                   
                                                     <div className="col-span-full sm:col-span-3">
                                                         <label htmlFor="estado" className="text-lilas">Estado</label>
                                                         <select id="estado" name="estado" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required>
@@ -130,16 +131,17 @@ export default function Criar() {
                                                         </select>
                                                         <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
                                                     </div>
+
                                                     <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="localizacao" className="text-lilas">Localização</label>
-                                                        <input id="localizacao" name="localizacao" type="text" placeholder="Digite a localização da doca" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
+                                                        <label htmlFor="latitude" className="text-lilas">Latitude</label>
+                                                        <input id="latitude" name="latitude" type="text" placeholder="Digite a latiude da estacao" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
                                                         <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>
+                                                    </div> 
                                                     <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="foto" className="text-lilas">Foto</label>
-                                                        <input id="foto" name="foto" type="file" accept="image/*" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" onChange={(e) => setFoto(e.target.files[0])} />
+                                                        <label htmlFor="longitude" className="text-lilas">Longitude</label>
+                                                        <input id="longitude" name="longitude" type="text" placeholder="Digite a longitude da estacao" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
                                                         <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>
+                                                    </div>                                                    
                                                 </div>
                                                 <div className='col-span-full my-3'>
                                                     <button className='p-2 w-full bg-lilas rounded text-gray-50' type='submit'>Cadastrar</button>

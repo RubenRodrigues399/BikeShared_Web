@@ -1,11 +1,32 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import NavBar from '../../../components/NavBar';
-import SuccessMensage from '../../../components/SuccesMessageComponent';
+import SuccessMessage from '../../../components/SuccesMessageComponent';
 import { FaHome, FaStickyNote, FaArrowRight } from 'react-icons/fa';
 
+
 export default function Criar() {
+    const [message, setMessage] = useState(false);
+    const router = useRouter();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Aqui você pode adicionar a lógica de submissão do formulário, como enviar os dados para o servidor
+        setMessage("Aceda a Listagem para ver a Doca adicionada");
+    };
+
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => {
+                setMessage(false);
+                router.push('../docas/Listagem/');
+            }, 2000); // 2   segundos
+
+            return () => clearTimeout(timer);
+        }
+    }, [message, router]);
 
     return (
         <>
@@ -51,57 +72,40 @@ export default function Criar() {
                             <section className='w-3/5 mt-[-55px] mx-auto flex justify-center'>
                                 <div className="w-full mx-auto max-w-screen-xl py-16">
                                     <section className="py-2">
-                                        <form action="" className="container flex flex-col mx-auto space-y-12">
-                                           
-                                                    <fieldset className="gap-6 p-6 bg-gray-50 rounded-md shadow-sm dark:bg-gray-50 pt-8">
-                                                        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-                                                            {/* <div className="col-span-full sm:col-span-3">
-                                                                <label htmlFor="descricao" className="text-lilas">Descrição</label>
-                                                                <input id="descricao" type="text" placeholder="Descrição da doca" className="w-full  placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" />
-                                                            </div>*/}
-                                                            <div className="col-span-full sm:col-span-3">
-                                                                <label htmlFor="idEstacao" className="text-lilas">Estação</label>
-                                                                <select id="idEstacao" className="w-full  placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" >
-                                                                    <option className="text-lilas" value="0">Selecione a estação</option>
-                                                                    <option className="text-lilas" value="1">Estação1</option>
-                                                                    <option className="text-lilas" value="2">Camama station</option>
-                                                                    <option className="text-lilas" value="1">Estação3</option>
-                                                                    <option className="text-lilas" value="2">Estação4</option>                                                                    
-                                                                </select>
-                                                            </div>
-                                                            <div className="col-span-full sm:col-span-3">
-                                                                <label htmlFor="estado" className="text-lilas">Estado</label>
-                                                                <select id="estado" className="w-full  placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" >
-                                                                    <option className="text-lilas" value="1">Desactiva</option>
-                                                                    <option className="text-lilas" value="2">Activa</option>
-                                                                </select>
-                                                            </div>
-                                                            
-                                                        </div>
-
-                                        
-
-                                                        <div className='col-span-full my-3'>
-                                                            <button className='p-2 w-full bg-lilas rounded text-gray-50' type='submit'>Cadastrar</button>
-                                                        </div>
-                                                    </fieldset>
+                                        <form onSubmit={handleSubmit} className="container flex flex-col mx-auto space-y-12">
+                                            <fieldset className="gap-6 p-6 bg-gray-50 rounded-md shadow-sm dark:bg-gray-50 pt-8">
+                                                <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+                                                    <div className="col-span-full sm:col-span-3">
+                                                        <label htmlFor="idEstacao" className="text-lilas">Estação</label>
+                                                        <select id="idEstacao" className="w-full  placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" >
+                                                            <option className="text-lilas" value="0">Selecione a estação</option>
+                                                            <option className="text-lilas" value="1">Estação1</option>
+                                                            <option className="text-lilas" value="2">Camama station</option>
+                                                            <option className="text-lilas" value="1">Estação3</option>
+                                                            <option className="text-lilas" value="2">Estação4</option>                                                                    
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-span-full sm:col-span-3">
+                                                        <label htmlFor="estado" className="text-lilas">Estado</label>
+                                                        <select id="estado" className="w-full  placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" >
+                                                            <option className="text-lilas" value="1">Desactiva</option>
+                                                            <option className="text-lilas" value="2">Activa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className='col-span-full my-3'>
+                                                    <button className='p-2 w-full bg-lilas rounded text-gray-50' type='submit'>Cadastrar</button>
+                                                </div>
+                                            </fieldset>
                                         </form>
                                     </section>
                                 </div>
                             </section>
-
                         </div>
                     </div>
                 </main>
-
-
-                {/* {
-                    message ?
-                        <SuccessMensage title="Estação Adicionada" text="Aceda a Listagem para ver o Estação adicionada" />
-
-                        : false
-                } */}
+                {message && <SuccessMessage message={message} />}
             </div>
         </>
-    )
+    );
 }

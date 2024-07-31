@@ -19,7 +19,6 @@ export default function ModalVisualizarEstacao({ show, onClose, estacao }) {
                     <p><strong>Localização:</strong> {estacao.localizacao}</p>
                     <p><strong>Data de Criação:</strong> {estacao.dataCriacao}</p>
                     <p><strong>Data de Atualização:</strong> {estacao.dataActualizacao}</p>
-                    {estacao.foto && <img src={estacao.foto} alt="Foto da estação" className="mt-4" />}
                 </div>
                 <div className="mt-4 flex justify-end">
                     <button onClick={onClose} className="bg-lilas text-white px-4 py-2 rounded">Fechar</button>

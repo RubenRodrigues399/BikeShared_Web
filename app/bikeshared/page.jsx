@@ -1,12 +1,13 @@
-"use client"
+//"use client"
 import NavBar from '../components/NavBar'
 import { FaArtstation } from 'react-icons/fa'
 import { FaPlaceOfWorship } from 'react-icons/fa'
 import { FaBicycle } from 'react-icons/fa'
 import { FaUser } from 'react-icons/fa'
-//import {getTodasEstacoes } from '../actions/estacao/cadastrar'
+import {getTodasEstacoes } from '../actions/estacao/estacao'
 
-export default function Servico() {
+export default async function Home() {
+    //const estacoes = await getTodasEstacoes()
     return (
         <>
             <div className='w-screen h-screen bg-[#CECECE]'>
