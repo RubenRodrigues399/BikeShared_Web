@@ -141,7 +141,12 @@ export default function Criar() {
                                                         <label htmlFor="longitude" className="text-lilas">Longitude</label>
                                                         <input id="longitude" name="longitude" type="text" placeholder="Digite a longitude da estacao" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
                                                         <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>                                                    
+                                                    </div>    
+                                                    <div className="col-span-full sm:col-span-3">
+                                                        <label htmlFor="premio" className="text-lilas">Prémio</label>
+                                                        <input id="premio" name="premio" type="text" placeholder="Digite o valor do prémio a se entregar" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
+                                                        <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
+                                                    </div>                                                
                                                 </div>
                                                 <div className='col-span-full my-3'>
                                                     <button className='p-2 w-full bg-lilas rounded text-gray-50' type='submit'>Cadastrar</button>

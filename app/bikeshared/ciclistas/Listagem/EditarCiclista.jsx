@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ModalEditarEstacao({ show, onClose, estacao, onSave }) {
+export default function ModalEditarCiclista({ show, onClose, estacao, onSave }) {
     const [formData, setFormData] = useState({ ...estacao });
 
     if (!show) return null;

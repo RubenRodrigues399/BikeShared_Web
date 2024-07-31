@@ -56,6 +56,16 @@ export const pegarTodasEstacoes = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://sch
                 <ns2:qtdDocasTotais>0</ns2:qtdDocasTotais>
                 <ns2:qtdDocasLivres>0</ns2:qtdDocasLivres>
             </ns2:todasEstacoes>
+            <ns2:todasEstacoes>
+                <ns2:id>2</ns2:id>
+                <ns2:nome>Camama Station</ns2:nome>
+                <ns2:premio>100</ns2:premio>
+                <ns2:latitude>0.0</ns2:latitude>
+                <ns2:longitude>0.0</ns2:longitude>
+                <ns2:activeState>true</ns2:activeState>
+                <ns2:qtdDocasTotais>5</ns2:qtdDocasTotais>
+                <ns2:qtdDocasLivres>2</ns2:qtdDocasLivres>
+            </ns2:todasEstacoes>
         </ns2:AllDocasResponse>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>`

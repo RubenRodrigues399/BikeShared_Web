@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/pageNotFound.jsx", "app/not-found.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/pageNotFound.jsx", "app/not-found.jsx", "app/actions/estacao/estacao.js"],
   "exclude": ["node_modules"]
 }

@@ -72,7 +72,7 @@ export default function ListagemEstacao() {
 
   return (
     <>
-      <div className="w-screen h-screen">
+      <div className="w-screen h-screen bg-[#CECECE]">
         <NavBar />
         <div className="w-full mt-8">
           <nav className="flex px-8 py-3 w-5/6 mx-auto text bg-[whitesmoke] rounded-md border-2 border-lilas">
@@ -135,6 +135,9 @@ export default function ListagemEstacao() {
                             N* de docas livres
                           </th>
                           <th scope="col" className="px-3 py-3 text-white">
+                            Prémio
+                          </th>
+                          <th scope="col" className="px-3 py-3 text-white">
                             Latitude
                           </th>
                           <th scope="col" className="px-3 py-3 text-white">
@@ -149,24 +152,25 @@ export default function ListagemEstacao() {
                         </tr>
                       </thead>
                       <tbody>
-                        {estacoes.map((item) => (
+                        {estacoes.map((item, index) => (
                           <tr
                             className="border-b border hover:bg-roxo/5"
-                            key={item.id}
+                            key={index}
                           >
-                            <td className="py-3 px-4">{item.id}</td>
-                            <td className="py-3 px-4">{item.nome}</td>
-                            <td className="py-3 px-4">{item.qtdDocasTotais}</td>
-                            <td className="py-3 px-4">{item.qtdDocasLivres}</td>
-                            <td className="py-3 px-4">{item.latitude}</td>
-                            <td className="py-3 px-4">{item.longitude}</td>
+                            <td className="py-3 px-4">{item.estacao['ns2:id']}</td>
+                            <td className="py-3 px-4">{item.estacao['ns2:nome']}</td>
+                            <td className="py-3 px-4">{item.estacao['ns2:qtdDocasTotais']}</td>
+                            <td className="py-3 px-4">{item.estacao['ns2:qtdDocasLivres']}</td>
+                            <td className="py-3 px-4">{item.estacao['ns2:premio']}</td>
+                            <td className="py-3 px-4">{item.estacao['ns2:latitude']}</td>
+                            <td className="py-3 px-4">{item.estacao['ns2:longitude']}</td>
                             <td className="py-3 px-4">
-                              {item.activeState ? (
+                              {item.estacao['ns2:activeState'] ? (
                                 <p className="bg-lilas text-white rounded-2xl p-1">
                                   Activo
                                 </p>
                               ) : (
-                                <p className="bg-red-500 text-lilas rounded-2xl p-1">
+                                <p className="bg-red-500 text-wite rounded-2xl p-1">
                                   Bloqueada
                                 </p>
                               )}
@@ -175,17 +179,17 @@ export default function ListagemEstacao() {
                               <div>
                                 <ul className="py-1 text-sm flex gap-1">
                                   <li>
-                                    <button onClick={() => handleViewClick(item)}>
+                                    <button onClick={() => handleViewClick(item.estacao)}>
                                       <FaEye />
                                     </button>
                                   </li>
                                   <li>
-                                    <button onClick={() => handleEditClick(item)}>
+                                    <button onClick={() => handleEditClick(item.estacao)}>
                                       <FaEdit />
                                     </button>
                                   </li>
                                   <li>
-                                    <button onClick={() => handleDeleteClick(item)}>
+                                    <button onClick={() => handleDeleteClick(item.estacao)}>
                                       <FaTrash />
                                     </button>
                                   </li>

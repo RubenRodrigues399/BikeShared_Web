@@ -7,7 +7,7 @@ import { FaUser } from 'react-icons/fa'
 import {getTodasEstacoes } from '../actions/estacao/estacao'
 
 export default async function Home() {
-    //const estacoes = await getTodasEstacoes()
+    const estacoes = await getTodasEstacoes()
     return (
         <>
             <div className='w-screen h-screen bg-[#CECECE]'>
@@ -25,7 +25,7 @@ export default async function Home() {
                                     </div>
 
                                     <div className="text-3xl text-lilas">
-                                        4
+                                    {estacoes.length}
                                     </div>
 
                                     {/* <div className="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium">
@@ -49,7 +49,7 @@ export default async function Home() {
                                     </div>
 
                                     <div className="text-3xl text-lilas">
-                                        8
+                                        4
                                     </div>
 
                                     {/* <div className="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium">
@@ -69,11 +69,11 @@ export default async function Home() {
                                 <div className="space-y-2 w-11/12">
                                     <div
                                         className="flex items-center space-x-2 rtl:space-x-reverse text-sm font-medium text-gray-400">
-                                        <span className='text-lilas'>Total de docas ocupadas</span>
+                                        <span className='text-lilas'>Total de docas</span>
                                     </div>
 
                                     <div className="text-3xl text-lilas">
-                                        4
+                                        8
                                     </div>
 
                                     {/* <div className="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium">
@@ -152,7 +152,7 @@ export default async function Home() {
                                             </div>
                                             <tr className='w-full flex justify-between'>
                                                 <td className="text-lilas">Estaçoes</td>
-                                                <td className="text-lilas">4</td>
+                                                <td className="text-lilas">{estacoes.length}</td>
                                             </tr>
                                             <div className="w-full rounded-full">
                                                 <div className="barraProgressoEstacao w-[45%] my-[5px] text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"> 45% em uso</div>
