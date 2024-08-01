@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ModalEditarEstacao({ show, onClose, estacao, onSave }) {
+export default function ModalEditarCiclista({ show, onClose, estacao, onSave }) {
     const [formData, setFormData] = useState({ ...estacao });
 
     if (!show) return null;
@@ -32,7 +32,7 @@ export default function ModalEditarEstacao({ show, onClose, estacao, onSave }) {
                             id="nome"
                             name="nome"
                             type="text"
-                            value={estacao.nome}
+                            value={formData.nome}
                             onChange={handleChange}
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                             required
@@ -44,7 +44,7 @@ export default function ModalEditarEstacao({ show, onClose, estacao, onSave }) {
                             id="qtdDocas"
                             name="qtdDocas"
                             type="number"
-                            value={estacao.qtdDocas}
+                            value={formData.qtdDocas}
                             onChange={handleChange}
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                             required
@@ -56,7 +56,7 @@ export default function ModalEditarEstacao({ show, onClose, estacao, onSave }) {
                             id="premio"
                             name="premio"
                             type="text"
-                            value={estacao.premio}
+                            value={formData.premio}
                             onChange={handleChange}
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                             required
@@ -68,7 +68,7 @@ export default function ModalEditarEstacao({ show, onClose, estacao, onSave }) {
                             id="estado"
                             name="estado"
                             type="text"
-                            value={estacao.estado}
+                            value={formData.estado}
                             onChange={handleChange}
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                             required
@@ -80,7 +80,7 @@ export default function ModalEditarEstacao({ show, onClose, estacao, onSave }) {
                             id="localizacao"
                             name="localizacao"
                             type="text"
-                            value={estacao.localizacao}
+                            value={formData.localizacao}
                             onChange={handleChange}
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                             required

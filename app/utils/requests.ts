@@ -95,12 +95,11 @@ export const pegarTodasReservas = `<soapenv:Envelope xmlns:soapenv="http://schem
 </soapenv:Envelope>`
 
 //----------------------------REQUEST: PEGAR TODOS OS USERS CICLISTAS  --------------
-export const pegarTodosCilclistas = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:stat="http://station.soap.xml">
+export const pegarTodosCilclistas = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://user.soap.xml">
    <soapenv:Header/>
    <soapenv:Body>
-      <stat:GetAllReservaRequest>
-         <stat:idEstacao>2</stat:idEstacao>
-      </stat:GetAllReservaRequest>
+      <user:GetAllCiclistasRequest>
+      </user:GetAllCiclistasRequest>
    </soapenv:Body>
 </soapenv:Envelope>`
 //----------------------------REQUEST: PEGAR TODOS OS USUÁRIOS ADMINISTRATIVOS  --------------
@@ -109,5 +108,15 @@ export const pegarTodosAdmins = `<soapenv:Envelope xmlns:soapenv="http://schemas
    <soapenv:Body>
       <user:GetAllAdmRequest>
       </user:GetAllAdmRequest>
+   </soapenv:Body>
+</soapenv:Envelope>`
+
+//----------------------------REQUEST: ADD UMA ESTAÇÃO UMA ESTAÇÃO NO BIKE SHARED --------------
+export const addEstacao = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://station.soap.xml">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <user:AddEstacaoBikeSharedRequest>
+         <user:url>http://localhost:8083/wsStation/station1.wsdl</user:url>
+      </user:AddEstacaoBikeSharedRequest>
    </soapenv:Body>
 </soapenv:Envelope>`

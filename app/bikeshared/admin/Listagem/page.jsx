@@ -4,11 +4,72 @@ import Link from 'next/link';
 import NavBar from '../../../components/NavBar';
 import SuccessMensage from '../../../components/SuccesMessageComponent';
 import LinhaTabelaAdmin from '../../../components/LinhaTabelaAdmin';
-import { FaHome, FaStickyNote, FaSearch, FaFilter, FaArrowRight, FaPlus } from 'react-icons/fa';
+import { FaHome, FaStickyNote, FaSearch, FaFilter, FaArrowRight, FaPlus,  FaEye,
+    FaEdit,
+    FaTrash,} from 'react-icons/fa';
+//import { pegarTodosAdmins } from "../../../actions/user";
+import { useEffect } from "react";
+import ModalVisualizarAdmin from '../../../bikeshared/admin/Listagem/VisualizarAdmin'
+import ModalEditarAdmin     from '../../../bikeshared/admin/Listagem/EditarAdmin' 
+import ModalEliminarAdmin   from '../../../bikeshared/admin/Listagem/EliminarAdmin' 
+import { getTodosAdmins }   from "../../../actions/admin/admin";
 
 export default function ListagemAdmin() {
+    const [admins, setAdmins] = useState([]);
+    const [selectedAdmins, setSelectedAdmins] = useState(null);
+    const [showViewModal, setShowViewModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     const [filter, setFilter] = useState(false)
+
+    const handleViewClick = (admin) => {my
+        setSelectedAdmins(admins);
+        setShowViewModal(true);
+      };
+    
+      const handleEditClick = (admin) => {
+        setSelectedAdmins(admins);
+        setShowEditModal(true);
+      };
+    
+      const handleDeleteClick = (admin) => {
+        setSelectedAdmins(admins);
+        setShowDeleteModal(true);
+      };
+    
+      const handleCloseViewModal = () => {
+        setShowViewModal(false);
+      };
+    
+      const handleCloseEditModal = () => {
+        setShowEditModal(false);
+      };
+    
+      const handleCloseDeleteModal = () => {
+        setShowDeleteModal(false);
+      };
+    
+      const handleSave = (updatedData) => {
+        // Implementar a lógica para atualizar os dados da estação
+        console.log("Dados atualizados:", updatedData);
+        handleCloseEditModal();
+      };
+    
+      const handleConfirmDelete = () => {
+        // Implementar a lógica para eliminar a estação
+        console.log("Admin eliminado:", selectedAdmin.id);
+        handleCloseDeleteModal();
+      };
+
+    useEffect(() => {
+        async function fetchData() {
+          //const result = await pegarTodosAdmins();
+          const result = await getTodosAdmins();
+          setAdmins(result);
+        }
+        fetchData();
+      }, []);
 
     return (
         <>
@@ -91,23 +152,62 @@ export default function ListagemAdmin() {
                                         <table className="w-full text-sm rounded ">
                                             <thead className="text-xs text-left uppercase bg-lilas">
                                                 <tr>
-                                                    <th scope="col" className="px-3 py-3 text-white">Id user</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">nome</th>
+                                                    <th scope="col" className="px-3 py-3 text-white">Id Admin</th>
+                                                    <th scope="col" className="px-3 py-3 text-white">Nome</th>
+                                                    <th scope="col" className="px-3 py-3 text-white">Sobrenome</th>
                                                     <th scope="col" className="px-3 py-3 text-white">Gênero</th>
                                                     <th scope="col" className="px-3 py-3 text-white">Número do BI</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Data de nascimento</th>
+                                                    <th scope="col" className="px-3 py-3 text-white">Email</th>
                                                     <th scope="col" className="px-3 py-3 text-white">Telefone</th>
                                                     <th scope="col" className="px-3 py-3 text-white">Tipo</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Data de criação</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Data de actualização</th>
                                                     <th scope="col" className="px-3 py-3 text-white">
                                                         <span className="sr-only">Acções</span>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <LinhaTabelaAdmin id="1" nome="Ruben Rodrigues" genero="Masculino" numbi="006754106LA044" dataNasci="03-03-1999" telefone="937869519" tipo="2"     dataCriacao="20-04-2024" dataActualizacao="04-07-2024"/>
-                                                <LinhaTabelaAdmin id="2" nome="Silk Manuel"     genero="Masculino" numbi="004387254LA098" dataNasci="09-08-2001" telefone="946753908" tipo="2" dataCriacao="22-04-2024" dataActualizacao="15-07-2024"/>
+                                            {admins.map((item, index) => (
+                          <tr
+                            className="border-b border hover:bg-roxo/5"
+                            key={index}
+                          >
+                            <td className="py-3 px-4">{item.dadosUser['ns2:id']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:nome']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:sobrenome']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:genero']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:BI']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:email']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:telefone']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:tipo']}</td>
+                            <td className="px-4 py-3 flex items-center justify-end">
+                              <div>
+                                <ul className="py-1 text-sm flex gap-1">
+                                  <li>
+                                    <button
+                                      onClick={() => handleViewClick(item)}
+                                    >
+                                      <FaEye />
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button
+                                      onClick={() => handleEditClick(item)}
+                                    >
+                                      <FaEdit />
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button
+                                      onClick={() => handleDeleteClick(item)}
+                                    >
+                                      <FaTrash />
+                                    </button>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
                                             </tbody>
                                         </table>
                                     </div>
@@ -119,6 +219,24 @@ export default function ListagemAdmin() {
                         </section>
                     </div>
                 </main>
+                <ModalVisualizarAdmin
+          show={showViewModal}
+          onClose={handleCloseViewModal}
+          admins={selectedAdmins}
+        />
+
+        <ModalEditarAdmin
+          show={showEditModal}
+          onClose={handleCloseEditModal}
+          admins={selectedAdmins}
+          onSave={handleSave}
+        />
+
+        <ModalEliminarAdmin
+          show={showDeleteModal}
+          onClose={handleCloseDeleteModal}
+          onConfirm={handleConfirmDelete}
+        />
             </div>
         </>
     )

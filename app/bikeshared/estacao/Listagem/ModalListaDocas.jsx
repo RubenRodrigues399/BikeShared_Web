@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function ModalListaDocas({ show, onClose, estacao, onToggleStatus }) {
+export default function ModalListaDocas({ show, onClose, docas, onToggleStatus }) {
     if (!show) return null;
 
     const handleToggleStatus = (doca) => {
@@ -15,8 +15,8 @@ export default function ModalListaDocas({ show, onClose, estacao, onToggleStatus
                     <button onClick={onClose} className="text-gray-500 text-2xl">&times;</button>
                 </div>
                 <div>
-                    {estacao.length > 0 ? (
-                        estacao.map((doca, index) => (
+                    {docas && docas.length > 0 ? (
+                        docas.map((doca, index) => (
                             <div key={index} className="flex justify-between items-center py-2">
                                 <span><strong>{doca.nome}:</strong> {doca.status}</span>
                                 <div>
@@ -37,9 +37,6 @@ export default function ModalListaDocas({ show, onClose, estacao, onToggleStatus
                         <p>Não há docas disponíveis</p>
                     )}
                 </div>
-                {/* <div className="mt-4 flex justify-end">
-                    <button onClick={onClose} className="bg-red-600 text-white px-4 py-2 rounded">Fechar</button>
-                </div> */}
             </div>
         </div>
     );

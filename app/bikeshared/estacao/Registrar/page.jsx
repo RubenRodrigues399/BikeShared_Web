@@ -6,20 +6,10 @@ import SuccessMensage from '../../../components/SuccesMessageComponent';
 import { FaHome, FaStickyNote, FaArrowRight } from 'react-icons/fa';
 
 export default function Criar() {
-    const [localizacao, setLocalizacao] = useState('');
-    const [docas, setDocas] = useState('');
-    const [premio, setPremio] = useState('');
-    const [foto, setFoto] = useState(null);
     const [message, setMessage] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Validação personalizada antes de enviar
-        if (!foto) {
-            alert("Por favor, insira uma foto.");
-            return;
-        }
 
         const formData = new FormData(e.target);
 
@@ -107,46 +97,11 @@ export default function Criar() {
                                             <fieldset className="gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50 pt-8">
                                                 <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                                                     <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="nome" className="text-lilas">Nome da estação</label>
-                                                        <input id="nome" name="nome" type="text" placeholder="O nome da estação" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required minLength={3} />
+                                                        <label htmlFor="urlEstacao" className="text-lilas">URL da estação</label>
+                                                        <input id="urlEstacao" name="urlEstacao" type="text" placeholder="DIgite a URL da estação" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required minLength={3} />
                                                         <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>
-                                                    <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="qtdDocas" className="text-lilas">Quantidade de docas</label>
-                                                        <input id="qtdDocas" name="docas" type="number" placeholder="Digite a quantidade de docas" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required min={1} />
-                                                        <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>
-                                                    <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="qtdDocasLivres" className="text-lilas">Quantidade de docas livres</label>
-                                                        <input id="qtdDocasLivres" name="docaslivres" type="number" placeholder="Digite a quantidade de docas livres" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required min={1} />
-                                                        <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>
-                                                   
-                                                    <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="estado" className="text-lilas">Estado</label>
-                                                        <select id="estado" name="estado" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required>
-                                                            <option className="text-lilas" value="">----</option>
-                                                            <option className="text-lilas" value="1">Activa</option>
-                                                            <option className="text-lilas" value="2">Desactiva</option>
-                                                        </select>
-                                                        <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>
-
-                                                    <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="latitude" className="text-lilas">Latitude</label>
-                                                        <input id="latitude" name="latitude" type="text" placeholder="Digite a latiude da estacao" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
-                                                        <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div> 
-                                                    <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="longitude" className="text-lilas">Longitude</label>
-                                                        <input id="longitude" name="longitude" type="text" placeholder="Digite a longitude da estacao" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
-                                                        <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>    
-                                                    <div className="col-span-full sm:col-span-3">
-                                                        <label htmlFor="premio" className="text-lilas">Prémio</label>
-                                                        <input id="premio" name="premio" type="text" placeholder="Digite o valor do prémio a se entregar" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
-                                                        <small className="text-red-600">{/* Mensagem de erro aqui */}</small>
-                                                    </div>                                                
+                                                    </div>  
+                                                                                                    
                                                 </div>
                                                 <div className='col-span-full my-3'>
                                                     <button className='p-2 w-full bg-lilas rounded text-gray-50' type='submit'>Cadastrar</button>

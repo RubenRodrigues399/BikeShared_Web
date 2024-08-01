@@ -22,8 +22,8 @@ import ModalEditarCiclista from '../../../bikeshared/ciclistas/Listagem/EditarCi
 import ModalEliminarCiclista from '../../../bikeshared/ciclistas/Listagem/EliminarCiclista' 
 
 export default function ListagemUsers() {
-  const [estacoes, setEstacoes] = useState([]);
-  const [selectedEstacao, setSelectedEstacao] = useState(null);
+  const [ciclistas, setCiclistas] = useState([]);
+  const [selectedCiclistas, setSelectedCiclistas] = useState(null);
   const [showViewModal, setShowViewModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -31,17 +31,17 @@ export default function ListagemUsers() {
   const [filter, setFilter] = useState(false);
 
   const handleViewClick = (estacao) => {
-    setSelectedEstacao(estacao);
+    setSelectedCiclistas(ciclista);
     setShowViewModal(true);
   };
 
   const handleEditClick = (estacao) => {
-    setSelectedEstacao(estacao);
+    setSelectedCiclistas(ciclista);
     setShowEditModal(true);
   };
 
   const handleDeleteClick = (estacao) => {
-    setSelectedEstacao(estacao);
+    setSelectedCliclista(ciclista);
     setShowDeleteModal(true);
   };
 
@@ -65,14 +65,14 @@ export default function ListagemUsers() {
 
   const handleConfirmDelete = () => {
     // Implementar a lógica para eliminar a estação
-    console.log("Estação eliminada:", selectedEstacao.id);
+    console.log("Cicista eliminado:", selectedCiclista.id);
     handleCloseDeleteModal();
   };
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getTodasEstacoes();
-      setEstacoes(result);
+      const result = await getTodosCiclistas();
+      setCiclistas(result);
     }
     fetchData();
   }, []);
@@ -270,18 +270,18 @@ export default function ListagemUsers() {
                         </tr>
                       </thead>
                       <tbody>
-                        {estacoes.map((item) => (
+                        {ciclistas.map((item, index) => (
                           <tr
                             className="border-b border hover:bg-roxo/5"
-                            key={item.id}
+                            key={index}
                           >
-                            <td className="py-3 px-4">{item.id}</td>
-                            <td className="py-3 px-4">{item.nome}</td>
-                            <td className="py-3 px-4">{item.sobrenome}</td>
-                            <td className="py-3 px-4">{item.genero}</td>
-                            <td className="py-3 px-4">{item.bi}</td>
-                            <td className="py-3 px-4">{item.email}</td>
-                            <td className="py-3 px-4">{item.telefone}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:id']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:nome']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:sobrenome']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:genero']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:BI']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:email']}</td>
+                            <td className="py-3 px-4">{item.dadosUser['ns2:telefone']}</td>
                             <td className="px-4 py-3 flex items-center justify-end">
                               <div>
                                 <ul className="py-1 text-sm flex gap-1">
@@ -323,13 +323,13 @@ export default function ListagemUsers() {
         <ModalVisualizarCiclista
           show={showViewModal}
           onClose={handleCloseViewModal}
-          estacao={selectedEstacao}
+          ciclista={selectedCiclistas}
         />
 
         <ModalEditarCiclista
           show={showEditModal}
           onClose={handleCloseEditModal}
-          estacao={selectedEstacao}
+          ciclista={selectedCiclistas}
           onSave={handleSave}
         />
 

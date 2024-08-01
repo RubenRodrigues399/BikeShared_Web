@@ -291,3 +291,13 @@ export const pegarTodosAdmins = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schem
         </ns2:GetAllAdmResponse>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>`
+
+export const addEstacao = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:AllDocasResponse xmlns:ns2="http://station.soap.xml">
+            <ns2:erro>false</ns2:erro>
+            <ns2:mensagem>Estação adiconada com sucesso.</ns2:mensagem>
+        </ns2:AllDocasResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>`
