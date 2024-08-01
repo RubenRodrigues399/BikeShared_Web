@@ -16,7 +16,7 @@ export default function ModalVisualizarEstacao({ show, onClose, estacao, onUpdat
 
     const handleToggleStatus = (docaToToggle) => {
         // Atualize o status da doca
-        const updatedDocas = estacao.docas.map(doca =>
+        const updatedDocas = estacao.qtdDocas.map(doca =>
             doca.id === docaToToggle.id
                 ? { ...doca, status: doca.status === 'Livre' ? 'Ocupada' : 'Livre' }
                 : doca
@@ -53,12 +53,15 @@ export default function ModalVisualizarEstacao({ show, onClose, estacao, onUpdat
                     <div className="mt-4 flex justify-end">
                         <button onClick={handleOpenDocasModal} className="bg-lilas text-white px-4 py-2 rounded">Lista de docas</button>
                     </div>
+                    {/* <div className="mt-4 flex justify-end">
+                        <button onClick={onClose} className="bg-red-600 text-white px-4 py-2 rounded">Fechar</button>
+                    </div> */}
                 </div>
             </div>
             <ModalListaDocas
                 show={showDocasModal}
                 onClose={handleCloseDocasModal}
-                docas={estacao.docas || []} // Garantir que docas não seja undefined
+                docas={estacao.docas}
                 onToggleStatus={handleToggleStatus}
             />
         </>

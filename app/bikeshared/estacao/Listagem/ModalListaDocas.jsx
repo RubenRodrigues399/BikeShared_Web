@@ -15,7 +15,7 @@ export default function ModalListaDocas({ show, onClose, docas, onToggleStatus }
                     <button onClick={onClose} className="text-gray-500 text-2xl">&times;</button>
                 </div>
                 <div>
-                    {docas && docas.length > 0 ? (
+                    {docas.length > 0 ? (
                         docas.map((doca, index) => (
                             <div key={index} className="flex justify-between items-center py-2">
                                 <span><strong>{doca.nome}:</strong> {doca.status}</span>

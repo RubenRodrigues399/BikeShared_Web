@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import NavBar from '../../components/NavBar';
 import SuccessMensage from '../../components/SuccesMessageComponent';
@@ -9,6 +10,8 @@ import { cadastroadmin } from '../../../app/actions/user';
 export default function RegistrarUsers({ onAdminRegistered }) {
     const [section, setSection] = useState(true);
     const [message, setMessage] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+    const router = useRouter();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -16,6 +19,7 @@ export default function RegistrarUsers({ onAdminRegistered }) {
         try {
             const newAdmin = await cadastroadmin(formData);
             setMessage(true);
+            setRedirect(true);
             if (onAdminRegistered) {
                 onAdminRegistered(newAdmin);
             }
@@ -23,6 +27,16 @@ export default function RegistrarUsers({ onAdminRegistered }) {
             console.error("Failed to register admin:", error);
         }
     };
+
+    useEffect(() => {
+        if (redirect) {
+            // Delay redirect to show success message
+            const timer = setTimeout(() => {
+                router.push('../../bikeshared/admin/Listagem/');
+            }, 2000); // Delay of 2 seconds
+            return () => clearTimeout(timer);
+        }
+    }, [redirect, router]);
 
     return (
         <>
@@ -128,7 +142,7 @@ export default function RegistrarUsers({ onAdminRegistered }) {
                 </main>
             </div>
 
-            {message && <SuccessMensage message="Usuário registrado com sucesso!" />}
+            {message && <SuccessMensage message="Administrador re registrado com sucesso!" />}
         </>
     );
 }
