@@ -1,3 +1,5 @@
+//-------USERS-----
+
 //----------------------------Estrutura do cadastro admin---------------------------------------DONE
 export const cadastroAdmin = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://user.soap.xml">
    <soapenv:Header/>
@@ -30,8 +32,28 @@ export const loginUser = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoa
       </user:GestorLoginRequest>
    </soapenv:Body>
 </soapenv:Envelope>`
+//----------------------------REQUEST: PEGAR TODOS OS USUÁRIOS ADMINISTRATIVOS  --------------DONE
+export const pegarTodosAdmins = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://user.soap.xml">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <user:GetAllAdmRequest>
+      </user:GetAllAdmRequest>
+   </soapenv:Body>
+</soapenv:Envelope>`
 
-//----------------------------Estrutura para pegar todas estações ------------------------
+
+//----------------------------REQUEST: PEGAR TODOS OS USERS CICLISTAS  --------------DONE
+export const pegarTodosCilclistas = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://user.soap.xml">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <user:GetAllCiclistasRequest>
+      </user:GetAllCiclistasRequest>
+   </soapenv:Body>
+</soapenv:Envelope>`
+
+
+
+//----------------------------Estrutura para pegar todas estações ------------------------DONE
 export const pegarTodasEstacoes = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://station.soap.xml">
    <soapenv:Header/>
    <soapenv:Body>
@@ -94,24 +116,9 @@ export const pegarTodasReservas = `<soapenv:Envelope xmlns:soapenv="http://schem
    </soapenv:Body>
 </soapenv:Envelope>`
 
-//----------------------------REQUEST: PEGAR TODOS OS USERS CICLISTAS  --------------
-export const pegarTodosCilclistas = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://user.soap.xml">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <user:GetAllCiclistasRequest>
-      </user:GetAllCiclistasRequest>
-   </soapenv:Body>
-</soapenv:Envelope>`
-//----------------------------REQUEST: PEGAR TODOS OS USUÁRIOS ADMINISTRATIVOS  --------------
-export const pegarTodosAdmins = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://user.soap.xml">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <user:GetAllAdmRequest>
-      </user:GetAllAdmRequest>
-   </soapenv:Body>
-</soapenv:Envelope>`
 
-//----------------------------REQUEST: ADD UMA ESTAÇÃO UMA ESTAÇÃO NO BIKE SHARED --------------
+
+//----------------------------REQUEST: ADD UMA ESTAÇÃO UMA ESTAÇÃO NO BIKESHARED --------------
 export const addEstacao = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://station.soap.xml">
    <soapenv:Header/>
    <soapenv:Body>

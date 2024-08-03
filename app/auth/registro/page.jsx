@@ -5,13 +5,33 @@ import Link from 'next/link';
 import NavBar from '../../components/NavBar';
 import SuccessMensage from '../../components/SuccesMessageComponent';
 import { FaHome, FaStickyNote, FaArrowRight } from 'react-icons/fa';
-import { cadastroadmin } from '../../../app/actions/user';
+import { cadastroadmin } from '../../actions/admin/addAdmin';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import adminSchema from '../validationSchema';
 
 export default function RegistrarUsers({ onAdminRegistered }) {
     const [section, setSection] = useState(true);
     const [message, setMessage] = useState(false);
     const [redirect, setRedirect] = useState(false);
     const router = useRouter();
+
+    // const { register, handleSubmit, formState: { errors } } = useForm({
+    //     resolver: zodResolver(adminSchema),
+    // });
+
+    // const onSubmit = async (formData) => {
+    //     try {
+    //         const newAdmin = await cadastroadmin(formData);
+    //         setMessage(true);
+    //         setRedirect(true);
+    //         if (onAdminRegistered) {
+    //             onAdminRegistered(newAdmin);
+    //         }
+    //     } catch (error) {
+    //         console.error("Failed to register admin:", error);
+    //     }
+    // };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -30,10 +50,9 @@ export default function RegistrarUsers({ onAdminRegistered }) {
 
     useEffect(() => {
         if (redirect) {
-            // Delay redirect to show success message
             const timer = setTimeout(() => {
                 router.push('../../bikeshared/admin/Listagem/');
-            }, 2000); // Delay of 2 seconds
+            }, 2000);
             return () => clearTimeout(timer);
         }
     }, [redirect, router]);

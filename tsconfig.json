@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/pageNotFound.jsx", "app/not-found.jsx", "app/actions/estacao/estacao.js", "app/actions/ciclista/ciclista.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/pageNotFound.jsx", "app/not-found.jsx", "app/actions/estacao/listarEstacoes.js", "app/actions/ciclista/listarCiclistas.js", "app/auth/authProviders.js", "app/actions/estacao/addEstacao.js", "app/actions/admin/addAdmin.js"],
   "exclude": ["node_modules"]
 }

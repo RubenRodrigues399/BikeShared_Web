@@ -15,8 +15,6 @@ export default function LinhaTabelaUsers(props) {
                 <td className="px-3 py-3">{props.dataNasci}</td>
                 <td className="px-3 py-3">{props.telefone}</td>
                 <td className="px-3 py-3">{props.tipo}</td>
-                <td className="px-3 py-3">{props.dataCriacao}</td>
-                <td className="px-3 py-3">{props.dataActualizacao}</td>
                 <td className="px-4 py-3 flex items-center justify-end">
                      <div>
                                 <ul className="py-1 text-sm flex gap-1">

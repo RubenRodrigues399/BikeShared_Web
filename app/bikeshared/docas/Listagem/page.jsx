@@ -3,9 +3,23 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import NavBar from '../../../components/NavBar';
 import LinhaTabelaDoca from '../../../components/LinhaTabelaDoca'
-import { FaHome, FaArrowRight, FaPlus } from 'react-icons/fa'
+import { FaHome, FaArrowRight, FaPlus, FaEye,
+    FaEdit,
+    FaTrash } from 'react-icons/fa'
+import { getTodasDocas }   from "../../../actions/docas/listarDocas";
+import { useEffect } from "react";
 
 export default function ListagemDoca() {
+    const [docas, setDocas] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+          //const result = await pegarTodosAdmins();
+          const result = await getTodasDocas();
+          setDocas(result);
+        }
+        fetchData();
+      }, []);
 
     return (
         <>
@@ -51,21 +65,52 @@ export default function ListagemDoca() {
                                         <table className="w-full text-sm rounded">
                                             <thead className="w-full text-xs text-left uppercase bg-lilas">
                                             <tr>
-                                                    <th scope="col" className="px-3 py-3 text-white">Id doca</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Descrição</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Estado da doca</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Bicicleta</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Estação</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">
-                                                        <span className="sr-only">Acções</span>
-                                                    </th>
+                                              <th scope="col" className="px-3 py-3 text-white">Id doca</th>
+                                              <th scope="col" className="px-3 py-3 text-white">Referência</th>
+                                              <th scope="col" className="px-3 py-3 text-white">Estado</th>
+                                              <th scope="col" className="px-3 py-3 text-white">
+                                                <span className="sr-only">Acções</span>
+                                              </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <LinhaTabelaDoca id="1" descricao="Doca1"       estado="Activa"    bicicleta="Bike1" estacao="camama station"  />
-                                                <LinhaTabelaDoca id="2" descricao="Doca2"       estado="Desactiva" bicicleta="Bike4" estacao="Estação1"        />
-                                                <LinhaTabelaDoca id="3" descricao="Doca3"       estado="Desactiva" bicicleta="Bike2" estacao="Estação4"        />
-                                                <LinhaTabelaDoca id="4" descricao="Doca4"       estado="Activa"    bicicleta="Bike3" estacao="Estação3"        />
+                                               {docas.map((item, index) => (
+                          <tr
+                            className="border-b border hover:bg-lilas"
+                            key={index}
+                          >
+                            <td className="py-3 px-4">{item.TodasDocas['ns2:id']}</td>
+                            <td className="py-3 px-4">{item.TodasDocas['ns2:reference']}</td>
+                            <td className="py-3 px-4">{item.TodasDocas['ns2:aberta']}</td>
+                            <td className="px-4 py-3 flex items-center justify-end">
+                              <div>
+                                <ul className="py-1 text-sm flex gap-1">
+                                  <li>
+                                    <button
+                                      onClick={() => handleViewClick(item)}
+                                    >
+                                      <FaEye />
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button
+                                      onClick={() => handleEditClick(item)}
+                                    >
+                                      <FaEdit />
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button
+                                      onClick={() => handleDeleteClick(item)}
+                                    >
+                                      <FaTrash />
+                                    </button>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
                                             </tbody>
                                         </table>
                                     </div>

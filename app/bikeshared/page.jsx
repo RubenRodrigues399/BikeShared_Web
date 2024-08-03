@@ -4,10 +4,14 @@ import { FaArtstation } from 'react-icons/fa'
 import { FaPlaceOfWorship } from 'react-icons/fa'
 import { FaBicycle } from 'react-icons/fa'
 import { FaUser } from 'react-icons/fa'
-import {getTodasEstacoes } from '../actions/estacao/estacao'
+import {getTodasEstacoes } from '../actions/estacao/listarEstacoes'
+import {getTodosCiclistas } from '../actions/ciclista/listarCiclistas'
+import {getTodosAdmins } from '../actions/admin/listarAdmins'
 
 export default async function Home() {
     const estacoes = await getTodasEstacoes()
+    const ciclistas = await getTodosCiclistas()
+    const admins = await getTodosAdmins()
     return (
         <>
             <div className='w-screen h-screen bg-[#CECECE]'>
@@ -128,18 +132,22 @@ export default async function Home() {
                                     </div>
 
                                     <div className="text-3xl text-lilas">
-                                        9
+                                    {ciclistas.length}
+                                    </div>
+                                </div>
+                                <FaUser className='text-4xl w-4/12 text-lilas' />
+                            </div>
+
+                            <div className="relative p-6 rounded-md bg-white flex items-center shadow border-2 border-lilas">
+                                <div className="space-y-2 w-11/12">
+                                    <div
+                                        className="flex items-center space-x-2 rtl:space-x-reverse text-sm font-medium text-gray-400">
+                                        <span className='text-lilas'>Total de administradores</span>
                                     </div>
 
-                                    {/* <div className="flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium">
-                                        <span className=' text-green-600'>2 Incluídos recentemente</span>
-                                        <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="green"
-                                            aria-hidden="true">
-                                            <path fillRule="evenodd"
-                                                d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
-                                                clipRule="evenodd"></path>
-                                        </svg>
-                                    </div> */}
+                                    <div className="text-3xl text-lilas">
+                                    {admins.length}
+                                    </div>
                                 </div>
                                 <FaUser className='text-4xl w-4/12 text-lilas' />
                             </div>

@@ -48,7 +48,7 @@ import { station } from "@/app/utils/api"
 // }
 
 //----------------Cadastro de estacao------------------------
-export async function cadastroEstacao(formData) {
+export async function addEstacaoInfo(formData) {
     const urlEstacao = formData.get("urlEstacao") 
 
    try {
@@ -57,7 +57,7 @@ export async function cadastroEstacao(formData) {
    <soapenv:Header/>
    <soapenv:Body>
       <user:AddEstacaoBikeSharedRequest>
-         <user:url>${urlEstacao}</user:url>
+         <user:url>http://localhost:8083/wsStation/station1.wsdl</user:url>
       </user:AddEstacaoBikeSharedRequest>
    </soapenv:Body>
 </soapenv:Envelope>`
@@ -76,3 +76,5 @@ export async function cadastroEstacao(formData) {
        throw error
    }
 }
+
+

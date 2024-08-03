@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import ModalVisualizarAdmin from '../../../bikeshared/admin/Listagem/VisualizarAdmin'
 import ModalEditarAdmin     from '../../../bikeshared/admin/Listagem/EditarAdmin' 
 import ModalEliminarAdmin   from '../../../bikeshared/admin/Listagem/EliminarAdmin' 
-import { getTodosAdmins }   from "../../../actions/admin/admin";
+import { getTodosAdmins }   from "../../../actions/admin/listarAdmins";
 
 export default function ListagemAdmin() {
     const [admins, setAdmins] = useState([]);

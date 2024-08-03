@@ -1,29 +1,17 @@
 import React, { useState } from 'react';
 //import ModalListaDocas from './ModalListaDocas';
 
-export default function ModalVisualizarCiclista({ show, onClose, estacao, onUpdateEstacao }) {
-    const [showDocasModal, setShowDocasModal] = useState(false);
+export default function ModalVisualizarCiclista({ show, onClose, ciclista, onUpdateEstacao }) {
+    const [showDocasModal, setShowEstacaoModal] = useState(false);
 
     if (!show) return null;
 
-    const handleOpenDocasModal = () => {
-        setShowDocasModal(true);
+    const handleOpenCiclistasModal = () => {
+        setShowEstacaoModal(true);
     };
 
-    const handleCloseDocasModal = () => {
-        setShowDocasModal(false);
-    };
-
-    const handleToggleStatus = (docaToToggle) => {
-        // Atualize o status da doca
-        const updatedDocas = estacao.qtdDocas.map(doca =>
-            doca.id === docaToToggle.id
-                ? { ...doca, status: doca.status === 'Livre' ? 'Ocupada' : 'Livre' }
-                : doca
-        );
-
-        // Atualize a estação com as docas modificadas
-        onUpdateEstacao({ ...estacao, docas: updatedDocas });
+    const handleCloseCiclistasModal = () => {
+        setShowEstacaoModal(false);
     };
 
     return (
@@ -35,28 +23,17 @@ export default function ModalVisualizarCiclista({ show, onClose, estacao, onUpda
                         <button onClick={onClose} className="text-gray-500 text-2xl">&times;</button>
                     </div>
                     <div>
-                        <p><strong>ID:</strong> {estacao.id}</p>
-                        <p><strong>Nome:</strong> {estacao.nome}</p>
-                        <p><strong>Quantidade de Docas:</strong> {estacao.qtdDocas}</p>
-                        <p><strong>Prêmio:</strong> {estacao.premio}</p>
-                        <p><strong>Estado:</strong> {estacao.estado}</p>
-                        <p><strong>Localização:</strong> {estacao.localizacao}</p>
+                        <p><strong>ID:</strong> {ciclista.id}</p>
+                        <p><strong>Nome:</strong> {ciclista.nome}</p>
+                        <p><strong>Sobrenome:</strong> {ciclista.sobrenome}</p>
+                        <p><strong>Genero:</strong> {ciclista.genero}</p>
+                        <p><strong>BI:</strong> {ciclista.BI}</p>
+                        <p><strong>Email:</strong> {ciclista.email}</p>
+                        <p><strong>Telefone:</strong> {ciclista.telefone}</p>
                     </div>
-                                    
-                    <div className="mt-4 flex justify-end">
-                        <button onClick={handleOpenDocasModal} className="bg-lilas text-white px-4 py-2 rounded">Lista de docas</button>
-                    </div>
-                    {/* <div className="mt-4 flex justify-end">
-                        <button onClick={onClose} className="bg-red-600 text-white px-4 py-2 rounded">Fechar</button>
-                    </div> */}
+                      
                 </div>
             </div>
-            <ModalListaDocas
-                show={showDocasModal}
-                onClose={handleCloseDocasModal}
-                docas={estacao.docas}
-                onToggleStatus={handleToggleStatus}
-            />
         </>
     );
 }

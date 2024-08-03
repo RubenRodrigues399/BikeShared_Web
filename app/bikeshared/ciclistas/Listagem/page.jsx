@@ -15,7 +15,7 @@ import {
   FaEdit,
   FaTrash,
 } from "react-icons/fa";
-import { getTodosCiclistas } from "../../../actions/ciclista/ciclista";
+import { getTodosCiclistas } from "../../../actions/ciclista/listarCiclistas";
 import { useEffect } from "react";
 import ModalVisualizarCiclista from '../../../bikeshared/ciclistas/Listagem/VisualizarCiclista'
 import ModalEditarCiclista from '../../../bikeshared/ciclistas/Listagem/EditarCiclista' 
@@ -30,17 +30,17 @@ export default function ListagemUsers() {
 
   const [filter, setFilter] = useState(false);
 
-  const handleViewClick = (estacao) => {
+  const handleViewClick = (ciclista) => {
     setSelectedCiclistas(ciclista);
     setShowViewModal(true);
   };
 
-  const handleEditClick = (estacao) => {
+  const handleEditClick = (ciclista) => {
     setSelectedCiclistas(ciclista);
     setShowEditModal(true);
   };
 
-  const handleDeleteClick = (estacao) => {
+  const handleDeleteClick = (ciclista) => {
     setSelectedCliclista(ciclista);
     setShowDeleteModal(true);
   };

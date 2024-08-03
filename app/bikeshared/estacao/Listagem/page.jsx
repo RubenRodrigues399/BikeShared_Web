@@ -10,7 +10,7 @@ import {
   FaEdit,
   FaTrash,
 } from "react-icons/fa";
-import { getTodasEstacoes } from "../../../actions/estacao/estacao";
+import { getTodasEstacoes } from "../../../actions/estacao/listarEstacoes";
 import { useState, useEffect } from "react";
 import ModalVisualizarEstacao from '../../../bikeshared/estacao/Listagem/VisualizarEstacao'
 import ModalEditarEstacao from '../../../bikeshared/estacao/Listagem/EditarEstacao' 
@@ -122,31 +122,25 @@ export default function ListagemEstacao() {
                     <table className="w-full text-sm rounded">
                       <thead className="text-xs text-left uppercase bg-lilas">
                         <tr>
-                          <th scope="col" className="px-3 py-3 text-white">
+                          <th scope="col" className="px-3 py-3 text-white text-center">
                             Id estação
                           </th>
-                          <th scope="col" className="px-3 py-3 text-white">
+                          <th scope="col" className="px-3 py-3 text-white text-center">
                             Nome
                           </th>
-                          <th scope="col" className="px-3 py-3 text-white">
+                          <th scope="col" className="px-3 py-3 text-white text-center">
                             N* de docas
                           </th>
-                          <th scope="col" className="px-3 py-3 text-white">
+                          <th scope="col" className="px-3 py-3 text-white text-center">
                             N* de docas livres
                           </th>
-                          <th scope="col" className="px-3 py-3 text-white">
-                            Prémio
+                          <th scope="col" className="px-3 py-3 text-white text-center">
+                            Local
                           </th>
-                          <th scope="col" className="px-3 py-3 text-white">
-                            Latitude
-                          </th>
-                          <th scope="col" className="px-3 py-3 text-white">
-                            Longitude
-                          </th>
-                          <th scope="col" className="px-3 py-3 text-white">
+                          <th scope="col" className="px-3 py-3 text-white text-center">
                             Estado
                           </th>
-                          <th scope="col" className="px-3 py-3 text-white">
+                          <th scope="col" className="px-3 py-3 text-white text-center">
                             <span className="sr-only">Acções</span>
                           </th>
                         </tr>
@@ -157,14 +151,12 @@ export default function ListagemEstacao() {
                             className="border-b border hover:bg-roxo/5"
                             key={index}
                           >
-                            <td className="py-3 px-4">{item.estacao['ns2:id']}</td>
-                            <td className="py-3 px-4">{item.estacao['ns2:nome']}</td>
-                            <td className="py-3 px-4">{item.estacao['ns2:qtdDocasTotais']}</td>
-                            <td className="py-3 px-4">{item.estacao['ns2:qtdDocasLivres']}</td>
-                            <td className="py-3 px-4">{item.estacao['ns2:premio']}</td>
-                            <td className="py-3 px-4">{item.estacao['ns2:latitude']}</td>
-                            <td className="py-3 px-4">{item.estacao['ns2:longitude']}</td>
-                            <td className="py-3 px-4">
+                            <td className="py-3 px-4 text-center">{item.estacao['ns2:id']}</td>
+                            <td className="py-3 px-4 text-center">{item.estacao['ns2:nome']}</td>
+                            <td className="py-3 px-4 text-center">{item.estacao['ns2:qtdDocasTotais']}</td>
+                            <td className="py-3 px-4 text-center">{item.estacao['ns2:qtdDocasLivres']}</td>
+                            <td className="py-3 px-4 text-center">{item.estacao['ns2:local']}</td>
+                            <td className="py-3 px-4 text-center">
                               {item.estacao['ns2:activeState'] ? (
                                 <p className="bg-lilas text-white rounded-2xl p-1">
                                   Activo
