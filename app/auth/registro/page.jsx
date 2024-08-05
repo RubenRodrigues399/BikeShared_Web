@@ -132,14 +132,14 @@ export default function RegistrarUsers({ onAdminRegistered }) {
                                                             <label htmlFor="telefone" className="text-lilas">Telefone</label>
                                                             <input id="telefone" name="telefone" type="tel" placeholder="Digite o seu telefone" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />
                                                         </div>
-                                                        <div className="col-span-full sm:col-span-3">
+                                                        {/* <div className="col-span-full sm:col-span-3">
                                                             <label htmlFor="tipo" className="text-lilas">Tipo de Admin</label>
                                                             <select id="tipo" name="tipo" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required>
                                                                 <option className="text-lilas" value=""></option>
                                                                 <option className="text-lilas" value="2">Admin</option>
                                                                 <option className="text-lilas" value="3">Super Admin</option>
                                                             </select>
-                                                        </div> 
+                                                        </div>  */}
                                                         <div className="col-span-full sm:col-span-3">
                                                             <label htmlFor="password" className="text-lilas">Senha</label>
                                                             <input id="password" name="password" type="text" placeholder="Digite a senha" className="w-full placeholder:text-lilas my-2 shadow rounded focus:outline-none dark:text-lilas text-sm focus:dark:ring-lilas dark:border-lilas" required />

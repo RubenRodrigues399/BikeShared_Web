@@ -120,6 +120,7 @@ export default function ListagemUsers() {
             <section className="bg-[whitesmoke] rounded-md w-full p-3 sm:p-0 overflow-hidden">
               <div className="mx-auto max-w-screen-xl px-4">
                 <div className="relative">
+                  {/* pesquisa e filtro */}
                   <div className="flex flex-col md:flex-row items-center justify-between space-y-3 py-4">
                     <div className="w-1/2">
                       <form className="flex items-center">

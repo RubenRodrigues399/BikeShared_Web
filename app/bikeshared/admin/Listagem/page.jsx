@@ -159,7 +159,7 @@ export default function ListagemAdmin() {
                                                     <th scope="col" className="px-3 py-3 text-white">Número do BI</th>
                                                     <th scope="col" className="px-3 py-3 text-white">Email</th>
                                                     <th scope="col" className="px-3 py-3 text-white">Telefone</th>
-                                                    <th scope="col" className="px-3 py-3 text-white">Tipo</th>
+                                                    {/* <th scope="col" className="px-3 py-3 text-white">Tipo</th> */}
                                                     <th scope="col" className="px-3 py-3 text-white">
                                                         <span className="sr-only">Acções</span>
                                                     </th>
@@ -178,7 +178,7 @@ export default function ListagemAdmin() {
                             <td className="py-3 px-4">{item.dadosUser['ns2:BI']}</td>
                             <td className="py-3 px-4">{item.dadosUser['ns2:email']}</td>
                             <td className="py-3 px-4">{item.dadosUser['ns2:telefone']}</td>
-                            <td className="py-3 px-4">{item.dadosUser['ns2:tipo']}</td>
+                            {/* <td className="py-3 px-4">{item.dadosUser['ns2:tipo']}</td> */}
                             <td className="px-4 py-3 flex items-center justify-end">
                               <div>
                                 <ul className="py-1 text-sm flex gap-1">

@@ -292,6 +292,7 @@ export const pegarTodosAdmins = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schem
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>`
 
+//----------------------------RESPONSE: Adicionar estação --------------
 export const addEstacao = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     <SOAP-ENV:Header/>
     <SOAP-ENV:Body>
@@ -299,5 +300,30 @@ export const addEstacao = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xml
             <ns2:erro>false</ns2:erro>
             <ns2:mensagem>Estação adiconada com sucesso.</ns2:mensagem>
         </ns2:AllDocasResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>`
+
+//----------------------------RESPONSE PRA PEGAR TODAS RESERVAS DE UMA ESTAÇÃO --------------
+export const addEstacao = `<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:GetAllReservaResponse xmlns:ns2="http://station.soap.xml">
+            <ns2:erro>false</ns2:erro>
+            <ns2:mensagem>Sucesso ao pegar as reservas de uma estação</ns2:mensagem>
+            <ns2:TodasReservas>
+                <ns2:erro>false</ns2:erro>
+                <ns2:id>353</ns2:id>
+                <ns2:idUser>2602</ns2:idUser>
+                <ns2:idEstacao>1</ns2:idEstacao>
+                <ns2:idDoca>52</ns2:idDoca>
+            </ns2:TodasReservas>
+            <ns2:TodasReservas>
+                <ns2:erro>false</ns2:erro>
+                <ns2:id>353</ns2:id>
+                <ns2:idUser>2602</ns2:idUser>
+                <ns2:idEstacao>1</ns2:idEstacao>
+                <ns2:idDoca>52</ns2:idDoca>
+            </ns2:TodasReservas>
+        </ns2:GetAllReservaResponse>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>`

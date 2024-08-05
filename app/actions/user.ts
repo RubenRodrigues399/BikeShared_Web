@@ -52,6 +52,3 @@ export async function authenticate(currentState: undefined, formData:FormData) {
 
 
 //----------------------Estrutura do consumo d--------------------------------
-export async function logOut (){
-  await signOut()
-}

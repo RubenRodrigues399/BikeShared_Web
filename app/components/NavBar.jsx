@@ -98,7 +98,7 @@
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { logOut } from '../actions/user'
+import { logOut } from '../actions/logOut'
 
 const navigation = [
   { name: 'Home', href: '/bikeshared', current: true },
@@ -173,14 +173,10 @@ export default function NavBar() {
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                  <span className="absolute -inset-1.5" />
+                <MenuButton>
+                
                   <span className="sr-only">Perfil menu</span>
-                  <img
-                    alt=""
-                    src="avatar-default-symbolic-svgrepo-com.svg"
-                    className="h-8 w-8 rounded-full"
-                  />
+                  <span className='w-10 h-1/3 flex items-center justify-center rounded bg-lilas text-white'>RR</span>
                 </MenuButton>
               </div>
               <MenuItems
@@ -201,8 +197,7 @@ export default function NavBar() {
                 <div className='block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100'>
                   <form action={logOut}>
                   <button type="submit">Sair</button>
-                  </form>
-                
+                  </form>                
                 </div>
                 </MenuItem>
               </MenuItems>
@@ -210,6 +205,7 @@ export default function NavBar() {
           </div>
         </div>
       </div>
+      
 
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pb-3 pt-2">
