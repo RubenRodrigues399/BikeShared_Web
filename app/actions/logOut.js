@@ -1,9 +1,5 @@
 "use server"
-import { api, user } from "../utils/api";
-import { xmlToJson } from "../utils/xml-to-json";
-import { signIn, signOut } from "../auth/providers";
-import {cleanNS2Obj} from '../utils/clean-ns2-objs'
-
+import { signOut } from "../auth/providers";
 export async function logOut (){
   await signOut()
 }

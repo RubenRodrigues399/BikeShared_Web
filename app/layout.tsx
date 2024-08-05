@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-   title: "BikeShared",
+  title: "BikeShared",
   description: "BikeShared Web Application",
 };
 
@@ -14,7 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
-      <body>{children}
+      <body className="w-screen h-screen">
+        {children}
         <script src="../path/to/flowbite/dist/flowbite.min.js" async></script>
       </body>
     </html>
