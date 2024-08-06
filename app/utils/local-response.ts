@@ -860,12 +860,12 @@ export const allCiclistas = `
 
 `
 
-export const allEstações = `
+export const allStations = `
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     <SOAP-ENV:Header/>
     <SOAP-ENV:Body>
         <ns2:AllDocasResponse xmlns:ns2="http://station.soap.xml">
-            <ns2:erro>true</ns2:erro>
+            <ns2:erro>false</ns2:erro>
             <ns2:mensagem>Falha ao pesquisar as estações!! I/O error: Ligação recusada</ns2:mensagem>
             <ns2:estacoes>
                 <ns2:estacao>

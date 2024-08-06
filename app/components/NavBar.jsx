@@ -4,7 +4,7 @@ import { logOut } from '../actions/logOut'
 
 const navigation = [
   { name: 'Home', href: '/bikeshared', current: true },
-  { name: 'Estações', href: '/bikeshared/estacao/', current: false },
+  { name: 'Estações', href: '/bikeshared/estacoes/', current: false },
   // { name: 'Docas', href: '/bikeshared/docas/Listagem', current: false },
   //{ name: 'Bicicletas', href: '/bikeshared/bikes/Listagem', current: false },
   { name: 'Ciclistas', href: '/bikeshared/ciclistas', current: false },

@@ -7,7 +7,7 @@ type Props = {
 }
 export default function BikeSharedLayout({ children }: Props) {
   return (
-    <main className='w-screen h-full bg-[#CECECE] container'>
+    <main className='w-screen min-h-screen bg-[#CECECE] container'>
       <NavBar />
       <div className="">
 

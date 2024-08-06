@@ -1,5 +1,5 @@
 "use server"
-import { api } from '@/app/utils/api';
+import { allStations } from '@/app/utils/local-response';
 import { cleanNS2Obj } from '../../utils/clean-ns2-objs';
 import { removeNs2 } from "../../utils/remove-ns2";
 import { xmlToJson } from "../../utils/xml-to-json";
@@ -18,9 +18,11 @@ export async function getTodasEstacoes() {
     try {
         let list =[]
       
-       const dataXML = await api.post("/baikeshared", BODY_XML)
-      const resJSON = xmlToJson(dataXML.data, "AllDocasResponse")
-  console.log("res: ", resJSON.estacoes)
+    //    const dataXML = await api.post("/baikeshared", BODY_XML)
+    //   const resJSON = xmlToJson(dataXML.data, "AllDocasResponse")
+    const resJSON = xmlToJson(allStations, "AllDocasResponse")
+
+  console.log("res 2:", resJSON.estacoes)
     if(!resJSON.erro===false)
         return null
 
