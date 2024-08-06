@@ -1,12 +1,9 @@
 "use server"
-//import { pegarTodasEstacoes } from "../../utils/responses";
+import { pegarTodosCiclistas } from "@/app/utils/local-response/ciclistas";
+import { cleanNS2Obj } from '../../utils/clean-ns2-objs';
 import { removeNs2 } from "../../utils/remove-ns2";
 import { xmlToJson } from "../../utils/xml-to-json";
-import { api, user } from "../../utils/api";
-import {cleanNS2Obj} from '../../utils/clean-ns2-objs'
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 
 export async function getTodosCiclistas() {
@@ -22,23 +19,18 @@ export async function getTodosCiclistas() {
         let list =[]
       
 
-        const dataXML = await api.post(user, BODY_XML)
-        //const dataXML = pegarTodasEstacoes
-        console.log("HEYYY:", dataXML)
-
-        const resJSON = xmlToJson(dataXML.data, "GetAllCiclistasResponse")
-        console.log("eeee:", resJSON.ciclistas)
-            if (!Array.isArray( resJSON.ciclistas)) {
+        //const dataXML = await api.post(user, BODY_XML)
+      //  const resJSON = xmlToJson(dataXML.data, "GetAllCiclistasResponse")
+        const dataXML = pegarTodosCiclistas 
+        const resJSON = xmlToJson(dataXML, "GetAllCiclistasResponse")
+        if(!resJSON.erro===false)
+            return null
+        if (!Array.isArray( resJSON.ciclistas)) {
                 list.push(cleanNS2Obj( resJSON.ciclistas))
-console.log('listaaa',lista)
                 return list
             }
-            const result = removeNs2(resJSON.ciclistas)
-            console.log('from', result)
-            return result
-
-
-
+        const result = removeNs2(resJSON.ciclistas)
+        return result
     } catch (error) {
         throw new Error("Falha ao carregar os ciclistas!")
 

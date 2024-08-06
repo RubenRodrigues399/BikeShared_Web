@@ -1,37 +1,17 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { FaArrowRight, FaHome, FaStickyNote } from 'react-icons/fa';
+import { cadastroadmin } from '../../actions/admin/addAdmin';
 import NavBar from '../../components/NavBar';
 import SuccessMensage from '../../components/SuccesMessageComponent';
-import { FaHome, FaStickyNote, FaArrowRight } from 'react-icons/fa';
-import { cadastroadmin } from '../../actions/admin/addAdmin';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import adminSchema from '../validationSchema';
 
 export default function RegistrarUsers({ onAdminRegistered }) {
     const [section, setSection] = useState(true);
     const [message, setMessage] = useState(false);
     const [redirect, setRedirect] = useState(false);
     const router = useRouter();
-
-    // const { register, handleSubmit, formState: { errors } } = useForm({
-    //     resolver: zodResolver(adminSchema),
-    // });
-
-    // const onSubmit = async (formData) => {
-    //     try {
-    //         const newAdmin = await cadastroadmin(formData);
-    //         setMessage(true);
-    //         setRedirect(true);
-    //         if (onAdminRegistered) {
-    //             onAdminRegistered(newAdmin);
-    //         }
-    //     } catch (error) {
-    //         console.error("Failed to register admin:", error);
-    //     }
-    // };
 
     const handleSubmit = async (event) => {
         event.preventDefault();

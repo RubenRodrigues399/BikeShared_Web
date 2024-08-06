@@ -1,12 +1,9 @@
 "use server"
-import { pegarTodasEstacoes } from "../../utils/responses";
+import { api } from '@/app/utils/api';
+import { cleanNS2Obj } from '../../utils/clean-ns2-objs';
 import { removeNs2 } from "../../utils/remove-ns2";
 import { xmlToJson } from "../../utils/xml-to-json";
-import { api, user } from "../../utils/api";
-import {cleanNS2Obj} from '../../utils/clean-ns2-objs'
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 
 export async function getTodasEstacoes() {
@@ -18,49 +15,22 @@ export async function getTodasEstacoes() {
    </soapenv:Body>
 </soapenv:Envelope>`
 
-    // try {
-    //  let list =[]
-    //     const dataXML = await api.post(user, BODY_XML)
-       
-        
-    //      const resJSON = xmlToJson(dataXML.data, "AllDocasResponse")
-         
-    //      const result =  cleanNS2Obj(resJSON.todasEstacoes)
-    //     //  console.log('xxxxx', typeof result )
-
-    //   list.push(result)
-    //   console.log('lista:', list)
-         
-    //    // const result = removeNs2(data)
-
-    //     //    console.log("Station JSON:", resJSON)
-    //     return result
-
-    // } catch (error) {
-    //     throw new Error("Falha ao Carregar a Estação!")
-
-    // }
-
     try {
         let list =[]
       
+       const dataXML = await api.post("/baikeshared", BODY_XML)
+      const resJSON = xmlToJson(dataXML.data, "AllDocasResponse")
+  console.log("res: ", resJSON.estacoes)
+    if(!resJSON.erro===false)
+        return null
 
-        const dataXML = await api.post(user, BODY_XML)
-        //const dataXML = pegarTodasEstacoes
-        console.log("HEYYY:", dataXML)
-
-        const resJSON = xmlToJson(dataXML.data, "AllDocasResponse")
-        console.log("eeee:", resJSON.estacoes)
-            if (!Array.isArray( resJSON.estacoes)) {
-                list.push(cleanNS2Obj( resJSON.estacoes))
-console.log('listaaa',lista)
-                return list
-            }
-            const result = removeNs2( resJSON.estacoes)
-            console.log('from',result)
-            return result
-
-
+    if (!Array.isArray( resJSON.estacoes)) {
+        list.push(cleanNS2Obj( resJSON.estacoes))
+        return list
+    }
+    const result = removeNs2( resJSON.estacoes)
+    console.log("result: ", result)
+    return result
 
     } catch (error) {
         throw new Error("Falha ao Carregar a Estação!")

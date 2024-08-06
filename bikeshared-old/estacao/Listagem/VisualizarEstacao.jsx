@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ModalListaDocas from './ModalListaDocas';
 import ModalReservas from './modalReservas';
 
@@ -54,15 +54,15 @@ export default function ModalVisualizarEstacao({ show, onClose, estacao, onUpdat
             <button onClick={onClose} className="text-gray-500 text-2xl">&times;</button>
           </div>
           <div>
-            <p><strong>ID:</strong> {estacao['ns2:id']}</p>
-            <p><strong>Nome:</strong> {estacao['ns2:nome']}</p>
-            <p><strong>Quantidade de Docas:</strong> {estacao['ns2:qtdDocasTotais']}</p>
-            <p><strong>Quantidade de Docas Livres:</strong> {estacao['ns2:qtdDocasLivres']}</p>
-            <p><strong>Prêmio:</strong> {estacao['ns2:premio']}</p>
-            <p><strong>Local:</strong> {estacao['ns2:local']}</p>
-            <p><strong>Latitude:</strong> {estacao['ns2:latitude']}</p>
-            <p><strong>Longitude:</strong> {estacao['ns2:longitude']}</p>
-            <p><strong>Estado:</strong> {estacao['ns2:activeState'] ? (
+            <p className='text-black'><strong>ID:</strong> {estacao['ns2:id']}</p>
+            <p className='text-black'><strong>Nome:</strong> {estacao['ns2:nome']}</p>
+            <p className='text-black'><strong>Quantidade de Docas:</strong> {estacao['ns2:qtdDocasTotais']}</p>
+            <p className='text-black'><strong>Quantidade de Docas Livres:</strong> {estacao['ns2:qtdDocasLivres']}</p>
+            <p className='text-black'><strong>Prêmio:</strong> {estacao['ns2:premio']}</p>
+            <p className='text-black'><strong>Local:</strong> {estacao['ns2:local']}</p>
+            <p className='text-black'><strong>Latitude:</strong> {estacao['ns2:latitude']}</p>
+            <p className='text-black'><strong>Longitude:</strong> {estacao['ns2:longitude']}</p>
+            <p className='text-black'><strong>Estado:</strong> {estacao['ns2:activeState'] ? (
               <span className="bg-lilas w-fit text-white rounded-2xl p-1">
                 Activo
               </span>

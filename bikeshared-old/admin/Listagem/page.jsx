@@ -1,18 +1,20 @@
 "use client"
-import React, { useState } from 'react';
 import Link from 'next/link';
+import React, { useState } from 'react';
+import {
+  FaArrowRight,
+  FaFilter,
+  FaHome,
+  FaPlus,
+  FaSearch
+} from 'react-icons/fa';
 import NavBar from '../../../components/NavBar';
-import SuccessMensage from '../../../components/SuccesMessageComponent';
-import LinhaTabelaAdmin from '../../../components/LinhaTabelaAdmin';
-import { FaHome, FaStickyNote, FaSearch, FaFilter, FaArrowRight, FaPlus,  FaEye,
-    FaEdit,
-    FaTrash,} from 'react-icons/fa';
 //import { pegarTodosAdmins } from "../../../actions/user";
 import { useEffect } from "react";
-import ModalVisualizarAdmin from '../../../bikeshared/admin/Listagem/VisualizarAdmin'
-import ModalEditarAdmin     from '../../../bikeshared/admin/Listagem/EditarAdmin' 
-import ModalEliminarAdmin   from '../../../bikeshared/admin/Listagem/EliminarAdmin' 
-import { getTodosAdmins }   from "../../../actions/admin/listarAdmins";
+import { getTodosAdmins } from "../../../actions/admin/listarAdmins";
+import ModalEditarAdmin from '../../../bikeshared/admin/Listagem/EditarAdmin';
+import ModalEliminarAdmin from '../../../bikeshared/admin/Listagem/EliminarAdmin';
+import ModalVisualizarAdmin from '../../../bikeshared/admin/Listagem/VisualizarAdmin';
 
 export default function ListagemAdmin() {
     const [admins, setAdmins] = useState([]);
@@ -181,29 +183,7 @@ export default function ListagemAdmin() {
                             {/* <td className="py-3 px-4">{item.dadosUser['ns2:tipo']}</td> */}
                             <td className="px-4 py-3 flex items-center justify-end">
                               <div>
-                                <ul className="py-1 text-sm flex gap-1">
-                                  <li>
-                                    <button
-                                      onClick={() => handleViewClick(item)}
-                                    >
-                                      <FaEye />
-                                    </button>
-                                  </li>
-                                  <li>
-                                    <button
-                                      onClick={() => handleEditClick(item)}
-                                    >
-                                      <FaEdit />
-                                    </button>
-                                  </li>
-                                  <li>
-                                    <button
-                                      onClick={() => handleDeleteClick(item)}
-                                    >
-                                      <FaTrash />
-                                    </button>
-                                  </li>
-                                </ul>
+                              
                               </div>
                             </td>
                           </tr>

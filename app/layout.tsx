@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
-      <body className="w-screen h-screen">
+      <body className="w-screen h-full">
         {children}
         <script src="../path/to/flowbite/dist/flowbite.min.js" async></script>
       </body>

@@ -127,13 +127,3 @@ export const addEstacao = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlso
       </user:AddEstacaoBikeSharedRequest>
    </soapenv:Body>
 </soapenv:Envelope>`
-
-//----------------------------REQUEST PARA PEGAR TODAS RESERVAS DE UMA ESTAÇÃO --------------
-export const pegarTodasReservas = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:stat="http://station.soap.xml">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <stat:GetAllReservaRequest>
-         <stat:idEstacao>1</stat:idEstacao>
-      </stat:GetAllReservaRequest>
-   </soapenv:Body>
-</soapenv:Envelope>`

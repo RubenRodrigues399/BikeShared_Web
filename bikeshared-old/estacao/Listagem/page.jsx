@@ -1,20 +1,18 @@
 "use client";
 import Link from "next/link";
-import NavBar from "../../../components/NavBar";
-import LinhaTabelaEstacao from "../../../components/LinhaTabelaEstacao";
+import { useEffect, useState } from "react";
 import {
-  FaHome,
   FaArrowRight,
-  FaPlus,
-  FaEye,
   FaEdit,
+  FaEye,
+  FaHome,
+  FaPlus,
   FaTrash,
 } from "react-icons/fa";
 import { getTodasEstacoes } from "../../../actions/estacao/listarEstacoes";
-import { useState, useEffect } from "react";
-import ModalVisualizarEstacao from '../../../bikeshared/estacao/Listagem/VisualizarEstacao'
-import ModalEditarEstacao from '../../../bikeshared/estacao/Listagem/EditarEstacao' 
-import ModalEliminarEstacao from '../../../bikeshared/estacao/Listagem/EliminarEstacao' 
+import ModalEditarEstacao from '../../../bikeshared/estacao/Listagem/EditarEstacao';
+import ModalEliminarEstacao from '../../../bikeshared/estacao/Listagem/EliminarEstacao';
+import ModalVisualizarEstacao from '../../../bikeshared/estacao/Listagem/VisualizarEstacao';
 
 export default function ListagemEstacao() {
   const [estacoes, setEstacoes] = useState([]);
@@ -71,9 +69,9 @@ export default function ListagemEstacao() {
   }, []);
 
   return (
-    <>
-      <div className="w-screen h-screen bg-[#CECECE]">
-        <NavBar />
+
+      <div>
+      
         <div className="w-full mt-8">
           <nav className="flex px-8 py-3 w-5/6 mx-auto text bg-[whitesmoke] rounded-md border-2 border-lilas">
             <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -146,10 +144,10 @@ export default function ListagemEstacao() {
                         </tr>
                       </thead>
                       <tbody>
-                        {estacoes.map((item, index) => (
+                        {estacoes.map((item) => (
                           <tr
-                            className="border-b border hover:bg-roxo/5"
-                            key={index}
+                            className="border-b border text-black hover:bg-roxo/5"
+                            key={item.estacao["ns2:id"]}
                           >
                             <td className="py-3 px-4 text-center">{item.estacao['ns2:id']}</td>
                             <td className="py-3 px-4 text-center">{item.estacao['ns2:nome']}</td>
@@ -158,11 +156,11 @@ export default function ListagemEstacao() {
                             <td className="py-3 px-4 text-center">{item.estacao['ns2:local']}</td>
                             <td className="py-3 px-4 text-center">
                               {item.estacao['ns2:activeState'] ? (
-                                <p className="bg-lilas text-white rounded-2xl p-1">
+                                <p className="bg-lilas/60 text-lilas rounded-2xl p-1">
                                   Activo
                                 </p>
                               ) : (
-                                <p className="bg-red-500 text-wite rounded-2xl p-1">
+                                <p className="bg-red-500/60 text-red-500 rounded-2xl p-1">
                                   Bloqueada
                                 </p>
                               )}
@@ -219,6 +217,6 @@ export default function ListagemEstacao() {
           onConfirm={handleConfirmDelete}
         />
       </div>
-    </>
+
   );
 }

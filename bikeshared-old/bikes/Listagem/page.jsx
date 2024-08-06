@@ -1,20 +1,20 @@
 "use client"
-import React, { useState } from 'react';
 import Link from 'next/link';
-import NavBar from '../../../components/NavBar';
-import LinhaTabelaBike from '../../../components/LinhaTabelaBike'
-import { FaHome, FaArrowRight, FaPlus } from 'react-icons/fa'
+import React from 'react';
+import { FaArrowRight, FaHome, FaPlus } from 'react-icons/fa';
+import LinhaTabelaBike from '../../../app/components/LinhaTabelaBike';
+import NavBar from '../../../app/components/NavBar';
 
 export default function ListagemBike() {
 
     return (
-        <>
+     
             <div className='w-screen h-screen bg-[#CECECE]'>
 
                 <NavBar />
 
                 <div className='w-full mt-8'>
-                    <nav className="flex px-8 py-3 w-5/6 mx-auto text bg-[whitesmoke] rounded-md border-2 border-lilas">
+                    <nav className="flex px-8 py-3 w-5/6 mx-auto text bg-[whitesmoke]  TEXrounded-md border-2 border-lilas">
                         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                             <li className="inline-flex items-center">
                                 <Link href="/Home" className="inline-flex items-center text-sm font-medium">
@@ -76,6 +76,6 @@ export default function ListagemBike() {
                     </div>
                 </main>
             </div>
-        </>
+    
     )
 }

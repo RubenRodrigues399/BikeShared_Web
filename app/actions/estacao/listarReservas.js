@@ -1,12 +1,9 @@
 "use server"
-import { pegarTodasEstacoes } from "../../utils/responses";
+import { api, user } from "../../utils/api";
+import { cleanNS2Obj } from '../../utils/clean-ns2-objs';
 import { removeNs2 } from "../../utils/remove-ns2";
 import { xmlToJson } from "../../utils/xml-to-json";
-import { api, user } from "../../utils/api";
-import {cleanNS2Obj} from '../../utils/clean-ns2-objs'
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 
 export async function getTodasReservas(idEstacao) {

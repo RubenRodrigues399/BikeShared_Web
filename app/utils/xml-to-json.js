@@ -1,7 +1,7 @@
 import { XMLParser } from "fast-xml-parser";
 
 export function xmlToJson(xml, ns2Resp) {
-    console.log('xml', xml)
+
 
     const parser = new XMLParser();
     const dataJSON = parser.parse(xml)

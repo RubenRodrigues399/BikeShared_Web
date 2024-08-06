@@ -1,9 +1,6 @@
 "use server"
-import { api, user } from "../../utils/api";
+import { newAdmin } from "@/app/utils/local-response";
 import { xmlToJson } from "../../utils/xml-to-json";
-import {removeNs2} from "../../utils/remove-ns2";
-import { signIn, signOut } from "../../auth/providers";
-import {cleanNS2Obj} from '../../utils/clean-ns2-objs'
 
 export async function cadastroadmin(formData) {
     const email = formData.get("email") 
@@ -41,9 +38,11 @@ export async function cadastroadmin(formData) {
    </soapenv:Body>
 </soapenv:Envelope>`
     
-       const dataXML = await api.post(user, BODY_XML)
-       console.log("xml:", dataXML)
-           const resJSON = xmlToJson(dataXML.data, "UserGestorResponse")
+console.log(BODY_XML)
+    //    const dataXML = await api.post(user, BODY_XML)
+    
+    //        const resJSON = xmlToJson(dataXML.data, "UserGestorResponse")
+    const resJSON = xmlToJson(newAdmin, "UserGestorResponse")
            console.log('xml to json', resJSON)
            if (resJSON.erro==false) {
                console.log('ADD ADMIN FOI!',resJSON)
